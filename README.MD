@@ -2,6 +2,9 @@
 
 - Dependências do Mingle configuradas;
 - Configuração do Mingle Iniciada;
-- Página de Login com PO;
 - Implementação do Login;
-- Exemplo de chamada para um serviço no ERP.
+- Exemplo de chamada para um serviço no ERP;
+
+- Dependêncidas do Portinari configradas;
+- Configuração tema TOTVS;
+- Página de Login com PO;

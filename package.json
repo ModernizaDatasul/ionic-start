@@ -28,6 +28,7 @@
     "@totvs/mingle": "0.0.1-20191121.1",
     "@totvs/mingle-ionic-device": "^1.0.0-20190522.1",
     "@totvs/mingle-ionic-geolocation": "^1.0.0-20190522.1",
+    "@totvs/portinari-theme": "^1.24.0",
     "core-js": "^2.5.4",
     "rxjs": "~6.5.1",
     "tslib": "^1.9.0",
