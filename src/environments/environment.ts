@@ -3,7 +3,10 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+    production: false,
+    app_identifier: 'your_app_id',
+    environment: 'DEV',
+    server: 'https://dev-mingle.totvs.com.br/api'
 };
 
 /*
