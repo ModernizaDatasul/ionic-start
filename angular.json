@@ -113,6 +113,11 @@
                 "glob": "**/*",
                 "input": "src/assets",
                 "output": "/assets"
+              },
+              {
+                "glob": "**\/*",
+                "input": "node_modules/@portinari/style/images",
+                "output": "assets/images"
               }
             ]
           },
