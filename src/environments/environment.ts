@@ -4,9 +4,9 @@
 
 export const environment = {
     production: false,
-    app_identifier: 'your_app_id',
+    app_identifier: '5a9859aea8163d000184faaa', // FIXME: Troca esse valor
     environment: 'DEV',
-    server: 'https://dev-mingle.totvs.com.br/api'
+    server: 'https://dev-mingle.totvs.com.br'
 };
 
 /*

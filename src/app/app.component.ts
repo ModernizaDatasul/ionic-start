@@ -31,7 +31,7 @@ export class AppComponent {
         });
     }
 
-    initializeMingle() {
+    async initializeMingle() {
         const config = new Configuration();
 
         config.app_identifier = environment.app_identifier;
@@ -41,11 +41,11 @@ export class AppComponent {
         config.modules.crashr = true;
         config.modules.usage_metrics = true;
         config.modules.gateway = true;
-        config.modules.push_notification = true;
-        config.modules.ocr = false;
-        config.modules.web = false;
+        config.modules.web = true;
 
         this.mingleService.setConfiguration(config);
+
+        await this.mingleService.init();
     }
 
 }

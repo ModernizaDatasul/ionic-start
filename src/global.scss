@@ -27,8 +27,13 @@
 
 .po-page-login-info-icon-container,
 .po-page-login-password-popover-container,
-.po-page-background-footer {
+.po-page-background-footer-select {
     display: none !important;
+}
+
+.po-page-background-secondary-logo {
+    display: flex;
+    justify-content: center;
 }
 
 po-input[name=customFieldInput],
@@ -36,14 +41,12 @@ po-input[name=customFieldInput],
     width: 100%;
 }
 
-po-input[name=customFieldInput] {
-    .po-field-title {
-        content: 'ALIAS';
-    }
-}
-
 .ion-page {
     display: flex;
     justify-content: center;
     background-color: #fbfbfb;
+}
+
+.po-page-login-panel {
+    padding: 20px;
 }
