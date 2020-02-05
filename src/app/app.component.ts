@@ -6,6 +6,7 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 import { MingleService, Configuration } from '@totvs/mingle';
 import { environment } from '../environments/environment';
+import { timer } from 'rxjs/observable/timer';
 
 @Component({
     selector: 'app-root',
@@ -13,6 +14,9 @@ import { environment } from '../environments/environment';
     styleUrls: ['app.component.scss']
 })
 export class AppComponent {
+
+    public showSplash = true;
+
     constructor(
         private platform: Platform,
         private splashScreen: SplashScreen,
@@ -24,8 +28,12 @@ export class AppComponent {
 
     initializeApp() {
         this.platform.ready().then(() => {
-            this.statusBar.styleDefault();
+            this.statusBar.styleBlackTranslucent();
             this.splashScreen.hide();
+
+            timer(3000).subscribe(() => {
+                this.showSplash = false;
+            });
 
             this.initializeMingle();
         });

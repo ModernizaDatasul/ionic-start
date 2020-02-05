@@ -1,13 +1,21 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>
-      Página Inicial
-    </ion-title>
-  </ion-toolbar>
+    <ion-toolbar color="primary">
+        <ion-title>
+            Página Inicial
+        </ion-title>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <div class="ion-padding">
-    <p>Aqui é a página inicial do App</p>
-  </div>
+    <div class="ion-padding">
+        <po-button p-label="Executar requisição REST"
+                   p-loading="false" 
+                   p-small="false" 
+                   (p-click)="executeRequest()">
+        </po-button>
+
+        <po-table [p-items]="items" [p-columns]="columns">
+        </po-table>
+    </div>
+
 </ion-content>
