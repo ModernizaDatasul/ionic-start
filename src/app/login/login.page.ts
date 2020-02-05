@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
     templateUrl: 'login.page.html',
     styleUrls: ['login.page.scss'],
 })
-export class LoginPage implements AfterViewInit {
+export class LoginPage {
 
     constructor(private mingleService: MingleService,
                 private poNotification: PoNotificationService,

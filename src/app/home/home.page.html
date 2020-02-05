@@ -6,16 +6,34 @@
     </ion-toolbar>
 </ion-header>
 
-<ion-content>
-    <div class="ion-padding">
-        <po-button p-label="Executar requisição REST"
-                   p-loading="false" 
-                   p-small="false" 
-                   (p-click)="executeRequest()">
-        </po-button>
+<ion-content fullscreen>
+    <ion-card>
+        <ion-card-header>
+            <ion-card-title>Requisição REST</ion-card-title>
+        </ion-card-header>
 
-        <po-table [p-items]="items" [p-columns]="columns">
-        </po-table>
-    </div>
+        <ion-card-content>
+            <ion-button color="primary" (click)="executeRequest()">Executar</ion-button>
+            
+            <ion-list>
+                <ion-item *ngFor="let item of items">
+                    <ion-label>{{ item.id  + " - " + item.name}}</ion-label>
+                </ion-item>
+            </ion-list>
+        </ion-card-content>
+    </ion-card>
 
+    <ion-card>
+        <ion-card-header>
+            <ion-card-title>SYNC</ion-card-title>
+        </ion-card-header>
+
+        <ion-card-content>
+            <ion-button color="primary" (click)="sync()">Sync</ion-button>
+
+            <ion-item *ngFor="let task of tasks">
+                <ion-label>{{ task.id  + " - " + task.actionName}}</ion-label>
+            </ion-item>
+        </ion-card-content>
+    </ion-card>
 </ion-content>

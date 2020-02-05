@@ -1,9 +1,7 @@
 import { Component } from '@angular/core';
-
 import { Platform } from '@ionic/angular';
-import { SplashScreen } from '@ionic-native/splash-screen/ngx';
-import { StatusBar } from '@ionic-native/status-bar/ngx';
-
+import { SplashScreen } from '@ionic-native/splash-screen';
+import { StatusBar } from '@ionic-native/status-bar';
 import { MingleService, Configuration } from '@totvs/mingle';
 import { environment } from '../environments/environment';
 import { timer } from 'rxjs/observable/timer';
@@ -21,8 +19,7 @@ export class AppComponent {
         private platform: Platform,
         private splashScreen: SplashScreen,
         private statusBar: StatusBar,
-        private mingleService: MingleService
-    ) {
+        private mingleService: MingleService) {
         this.initializeApp();
     }
 
@@ -30,6 +27,7 @@ export class AppComponent {
         this.platform.ready().then(() => {
             this.statusBar.styleBlackTranslucent();
             this.splashScreen.hide();
+            
 
             timer(3000).subscribe(() => {
                 this.showSplash = false;
@@ -41,11 +39,9 @@ export class AppComponent {
 
     async initializeMingle() {
         const config = new Configuration();
-
         config.app_identifier = environment.app_identifier;
         config.environment = environment.environment;
         config.server = environment.server;
-
         config.modules.crashr = true;
         config.modules.usage_metrics = true;
         config.modules.gateway = true;
@@ -54,6 +50,6 @@ export class AppComponent {
         this.mingleService.setConfiguration(config);
 
         await this.mingleService.init();
+        console.log('Mingle Iniciado');
     }
-
 }
