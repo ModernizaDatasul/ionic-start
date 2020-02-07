@@ -13,11 +13,12 @@
         </ion-card-header>
 
         <ion-card-content>
-            <ion-button color="primary" (click)="executeRequest()">Executar</ion-button>
+            <ion-button color="primary" 
+                        (click)="executeRequest()">Executar</ion-button>
             
             <ion-list>
                 <ion-item *ngFor="let item of items">
-                    <ion-label>{{ item.id  + " - " + item.name}}</ion-label>
+                    <ion-label>{{ item.id  + " - " + item.name }}</ion-label>
                 </ion-item>
             </ion-list>
         </ion-card-content>
@@ -25,15 +26,31 @@
 
     <ion-card>
         <ion-card-header>
-            <ion-card-title>SYNC</ion-card-title>
+            <ion-card-title>Tarefas</ion-card-title>
         </ion-card-header>
 
         <ion-card-content>
-            <ion-button color="primary" (click)="sync()">Sync</ion-button>
+            <ion-button color="primary"
+                        (click)="sync()">Sync</ion-button>
 
             <ion-item *ngFor="let task of tasks">
-                <ion-label>{{ task.id  + " - " + task.actionName}}</ion-label>
+                <ion-grid>
+                    <ion-row>
+                        <ion-label>{{ task.id  + " - " + task.actionName }}</ion-label>
+                    </ion-row>
+                    <ion-row>
+                        <ion-label>Telefone: {{ task.phone }} </ion-label>
+                    </ion-row>
+                </ion-grid>
             </ion-item>
+            
+            <ion-infinite-scroll threshold="100px" (ionInfinite)="getTasks()">
+                <ion-infinite-scroll-content
+                    loadingSpinner="bubbles"
+                    loadingText="Loading more data...">
+                </ion-infinite-scroll-content>
+            </ion-infinite-scroll>
+
         </ion-card-content>
     </ion-card>
 </ion-content>

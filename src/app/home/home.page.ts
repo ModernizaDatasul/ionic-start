@@ -2,9 +2,8 @@ import { OnInit } from '@angular/core/core';
 import { Component } from '@angular/core';
 import { MingleService } from '@totvs/mingle';
 import { LoadingController } from '@ionic/angular';
-// import { PoTableColumn } from '@portinari/portinari-ui';
+import { PoSyncService, PoResponseApi, PoSyncConfig, PoNetworkType } from '@portinari/portinari-sync';
 import { taskSchema } from '../sync/schemas';
-import { PoSyncService, PoSyncConfig, PoNetworkType, PoResponseApi } from '@portinari/portinari-sync';
 import MyPoDataTransform from '../sync/data-transform';
 
 @Component({
@@ -16,6 +15,7 @@ export class HomePage implements OnInit {
 
     public items = [];
     public tasks = [];
+    public page = 0;
 
     constructor(private mingleService: MingleService,
                 private loadingController: LoadingController,
@@ -23,31 +23,45 @@ export class HomePage implements OnInit {
 
     ngOnInit() {
         this.initializeSync();
-        this.getTasks();
     }
 
-    async getTasks() {
-        this.poSync.getModel('Task').find().exec().then((response: PoResponseApi) => {
-            this.tasks = response.items;
-            console.log('Tarefas', this.tasks);
-        });
+    getTasks() {
+        this.page = this.page + 1;
+        this.poSync.getModel('Task')
+            .find()
+            .page(this.page)
+            .pageSize(20)
+            .exec().then((response: PoResponseApi) => {
+                this.tasks = [this.tasks, ...response.items];
+                console.log('this.tasks', this.tasks);
+                console.log('response.items', response.items);
+            });
     }
+
     async initializeSync() {
         const schemas = [taskSchema];
 
         const config: PoSyncConfig = {
             dataTransform: MyPoDataTransform,
             type: [PoNetworkType.ethernet, PoNetworkType.wifi, PoNetworkType._3g, PoNetworkType._4g],
-            period: 30
+            period: 300
         };
 
         await this.poSync.prepare(schemas, config);
-        // this.poSync.sync(); FIXME: Controlar o primeiro login
-        this.poSync.loadData();
+
+        const syncLoading = await this.loadingController.create({ message: 'Executando carga inicial' });
+        syncLoading.present();
+
+        this.poSync.loadData().subscribe(() => { // this.poSync.sync(); FIXME: Controlar o primeiro login
+            syncLoading.dismiss();
+            this.getTasks();
+        }, error => syncLoading.dismiss());
     }
 
     async sync() {
         await this.poSync.sync();
+        this.page = 0;
+        this.getTasks();
     }
 
     async executeRequest() {

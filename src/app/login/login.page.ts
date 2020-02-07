@@ -25,7 +25,8 @@ export class LoginPage {
 
     public literals: PoPageLoginLiterals = {
         rememberUser: 'Lembrar Usuário',
-        title: 'Bem-vindo ao Nome do App'
+        title: 'Bem-vindo ao "Nome do App"',
+        loginPlaceholder: 'Insira seu usuário'
     };
 
     async login(formData: any) {

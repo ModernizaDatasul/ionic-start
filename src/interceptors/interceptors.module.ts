@@ -17,4 +17,4 @@ import { MingleHttpInterceptor } from '@totvs/mingle';
         }
     ],
 })
-export class InterceptorModule { }
+export class InterceptorsModule { }

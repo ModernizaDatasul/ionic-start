@@ -6,12 +6,12 @@ import { RouterModule } from '@angular/router';
 
 import { HomePage } from './home.page';
 import { PoSyncModule } from '@portinari/portinari-sync';
-import { InterceptorModule } from '../../interceptors/interceptor.module';
+import { InterceptorsModule } from '../../interceptors/interceptors.module';
 
 @NgModule({
     imports: [
         CommonModule,
-        InterceptorModule,
+        InterceptorsModule,
         FormsModule,
         IonicModule,
         PoSyncModule,

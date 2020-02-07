@@ -1,8 +1,6 @@
 import { PoDataTransform } from '@portinari/portinari-sync';
 
 class MyPoDataTransform extends PoDataTransform {
-    protected data: any;
-    
     getDateFieldName(): string {
         return 'totvs_sync_date';
     }

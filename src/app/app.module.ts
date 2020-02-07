@@ -11,14 +11,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { MingleService } from '@totvs/mingle';
 import { PoModule } from '@portinari/portinari-ui';
 import { PoStorageModule } from '@portinari/portinari-storage';
-import { InterceptorModule } from '../interceptors/interceptor.module';
+import { PoSyncModule } from '@portinari/portinari-sync';
 
 @NgModule({
     declarations: [AppComponent],
     entryComponents: [],
     imports: [
         BrowserModule,
-        InterceptorModule,
+        PoSyncModule,
         IonicModule.forRoot(),
         PoStorageModule.forRoot({
             name: 'myApp', // FIXME: Mudar o nome

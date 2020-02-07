@@ -20,14 +20,14 @@ export class AppComponent {
         private splashScreen: SplashScreen,
         private statusBar: StatusBar,
         private mingleService: MingleService) {
+        console.log('teste');
         this.initializeApp();
     }
 
     initializeApp() {
-        this.platform.ready().then(() => {
+        this.platform.ready().then(async () => {
             this.statusBar.styleBlackTranslucent();
             this.splashScreen.hide();
-            
 
             timer(3000).subscribe(() => {
                 this.showSplash = false;
@@ -50,6 +50,5 @@ export class AppComponent {
         this.mingleService.setConfiguration(config);
 
         await this.mingleService.init();
-        console.log('Mingle Iniciado');
     }
 }
